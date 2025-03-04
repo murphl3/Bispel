@@ -1,9 +1,9 @@
 extends Node
 
 func _ready() -> void:
-	pass
+	Global.spawnPlayer()
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	pass
 
 func _on_child_entered_tree(node: Node) -> void:
