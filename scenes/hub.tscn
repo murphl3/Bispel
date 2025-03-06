@@ -13,8 +13,8 @@ sky = SubResource("Sky_dj7ds")
 tonemap_mode = 2
 glow_enabled = true
 
-[sub_resource type="PlaneMesh" id="PlaneMesh_ch0yf"]
-size = Vector2(50, 50)
+[sub_resource type="BoxMesh" id="BoxMesh_hcxm3"]
+size = Vector3(50, 0.01, 50)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_kmy70"]
 
@@ -31,7 +31,7 @@ shadow_enabled = true
 use_collision = true
 
 [node name="CSGMesh3D" type="CSGMesh3D" parent="Greybox"]
-mesh = SubResource("PlaneMesh_ch0yf")
+mesh = SubResource("BoxMesh_hcxm3")
 
 [node name="WorldGravity" type="Area3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 25, 0)
