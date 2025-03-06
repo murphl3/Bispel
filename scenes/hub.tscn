@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://cj068k2iap5no"]
+[gd_scene load_steps=6 format=3 uid="uid://cj068k2iap5no"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_kjc82"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -16,6 +16,8 @@ glow_enabled = true
 [sub_resource type="PlaneMesh" id="PlaneMesh_ch0yf"]
 size = Vector2(50, 50)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_kmy70"]
+
 [node name="Hub" type="Node3D"]
 
 [node name="Environment" type="WorldEnvironment" parent="."]
@@ -30,3 +32,12 @@ use_collision = true
 
 [node name="CSGMesh3D" type="CSGMesh3D" parent="Greybox"]
 mesh = SubResource("PlaneMesh_ch0yf")
+
+[node name="WorldGravity" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 25, 0)
+gravity_space_override = 3
+gravity_point_unit_distance = 44.0
+
+[node name="Collider" type="CollisionShape3D" parent="WorldGravity"]
+transform = Transform3D(51, 0, 0, 0, 51, 0, 0, 0, 51, 0, 0, 0)
+shape = SubResource("BoxShape3D_kmy70")

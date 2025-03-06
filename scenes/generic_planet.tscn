@@ -1,0 +1,54 @@
+[gd_scene load_steps=8 format=3 uid="uid://ce3ygay5ak3ib"]
+
+[ext_resource type="PackedScene" uid="uid://wsrdf33o1qh6" path="res://scenes/spawner.tscn" id="1_6sgnt"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_uosth"]
+sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="Sky_wq67g"]
+sky_material = SubResource("ProceduralSkyMaterial_uosth")
+
+[sub_resource type="Environment" id="Environment_rpshi"]
+background_mode = 2
+sky = SubResource("Sky_wq67g")
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="SphereMesh" id="SphereMesh_dqqr6"]
+radius = 25.0
+height = 50.0
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_rwe1d"]
+radius = 25.0
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_rlp8r"]
+radius = 50.0
+
+[node name="Generic Planet" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_rpshi")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
+shadow_enabled = true
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D"]
+mesh = SubResource("SphereMesh_dqqr6")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+shape = SubResource("SphereShape3D_rwe1d")
+
+[node name="Area3D" type="Area3D" parent="."]
+gravity_space_override = 3
+gravity_point = true
+gravity_point_unit_distance = 25.0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("SphereShape3D_rlp8r")
+
+[node name="Spawner" parent="." instance=ExtResource("1_6sgnt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 25.1, 0)

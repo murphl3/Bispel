@@ -21,13 +21,11 @@ func spawnPlayer(id: int = 0) -> void:
 		.filter(func(n: Node) -> bool: return n.get_meta("Active", false))\
 		.filter(func(n: Node) -> bool: return n.get_meta("SpawnTypes", []).has("Player"))
 	var player: CharacterBody3D
-	print(player)
 	if idDict.has(id):
 		player = idDict[id]
 	else:
 		player = playerScene.instantiate()
 		get_tree().root.get_node("Main").add_child(player)
-		print(player)
 	if spawners.size() > 0:
 		var spawner = spawners.pick_random()
 		player.position = spawner.position
