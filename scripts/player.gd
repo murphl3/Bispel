@@ -8,7 +8,7 @@ extends CharacterBody3D
 @export var VERTICAL_SENSITIVITY: float = 0.005
 @export var HORIZONTAL_SENSITIVITY: float = 0.01
 @export var FRICTION: float = 7.5
-@export var ROTATION_SENSITIVITY: float = 7.5
+@export var ROTATION_SENSITIVITY: float = 10
 var mouse_captured: bool = false
 
 func capture_mouse() -> void:
