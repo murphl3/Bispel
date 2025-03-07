@@ -1,12 +1,12 @@
 [gd_scene load_steps=3 format=3 uid="uid://d2j2skqrjfu2v"]
 
 [ext_resource type="Script" uid="uid://brpslwakr87ub" path="res://scripts/main.gd" id="1_suxg6"]
-[ext_resource type="PackedScene" uid="uid://cj068k2iap5no" path="res://scenes/hub.tscn" id="2_r6acd"]
+[ext_resource type="PackedScene" uid="uid://cj068k2iap5no" path="res://scenes/generic_maze.tscn" id="2_r6acd"]
 
 [node name="Main" type="Node"]
 script = ExtResource("1_suxg6")
 
-[node name="Hub" parent="." instance=ExtResource("2_r6acd")]
+[node name="Generic Maze" parent="." instance=ExtResource("2_r6acd")]
 
 [connection signal="child_entered_tree" from="." to="." method="_on_child_entered_tree"]
 [connection signal="child_exiting_tree" from="." to="." method="_on_child_exiting_tree"]
