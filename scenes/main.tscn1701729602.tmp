@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=3 uid="uid://d2j2skqrjfu2v"]
+
+[ext_resource type="Script" uid="uid://brpslwakr87ub" path="res://scripts/main.gd" id="1_suxg6"]
+
+[node name="Main" type="Node"]
+script = ExtResource("1_suxg6")
+
+[node name="Sun" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
+shadow_enabled = true
+
+[node name="Camera3D" type="Camera3D" parent="."]
+
+[connection signal="child_entered_tree" from="." to="." method="_on_child_entered_tree"]
+[connection signal="child_exiting_tree" from="." to="." method="_on_child_exiting_tree"]

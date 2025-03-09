@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://bmttd8ocfiimp"]
+
+[sub_resource type="GDScript" id="GDScript_h7wtm"]
+script/source = "extends Marker3D
+
+@export var active: bool = true
+@export var spawnable_entities: Array[GlobalEnums.Entities]
+"
+
+[node name="Spawnpoint" type="Marker3D" groups=["Spawnpoint"]]
+script = SubResource("GDScript_h7wtm")

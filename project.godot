@@ -17,11 +17,13 @@ config/icon="res://icon.svg"
 
 [autoload]
 
+GlobalEnums="*res://scripts/global_enums.gd"
 Global="*res://scripts/global.gd"
+GlobalInputs="*res://scripts/global_inputs.gd"
 
 [global_group]
 
-id_required="This entity needs to be assigned an ID upon instantiation."
+id_required="This scene requires an ID when instantiated."
 
 [input]
 

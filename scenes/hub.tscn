@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=3 uid="uid://cjfje5m2wtu2g"]
+
+[ext_resource type="PackedScene" uid="uid://bmttd8ocfiimp" path="res://scenes/spawnpoint.tscn" id="1_qssp3"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_hcxm3"]
+size = Vector3(50, 0.01, 50)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_hcxm3"]
+size = Vector3(50, 50, 50)
+
+[node name="Hub" type="Node3D"]
+
+[node name="GreyBox" type="CSGCombiner3D" parent="."]
+use_collision = true
+
+[node name="CSGMesh3D" type="CSGMesh3D" parent="GreyBox"]
+mesh = SubResource("BoxMesh_hcxm3")
+
+[node name="Gravity" type="Area3D" parent="."]
+gravity_space_override = 1
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Gravity"]
+shape = SubResource("BoxShape3D_hcxm3")
+
+[node name="Spawnpoint" parent="." instance=ExtResource("1_qssp3")]
+spawnable_entities = Array[int]([0])
