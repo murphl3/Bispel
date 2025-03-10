@@ -1,4 +1,3 @@
-@tool
 extends Node
 
 @export var player: PackedScene = preload("res://scenes/player.tscn")
