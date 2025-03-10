@@ -41,3 +41,4 @@ func spawn(entity: Node) -> void:
 		spawnpoint = Marker3D.new()
 	entity.rotation = spawnpoint.rotation
 	entity.position = spawnpoint.position
+	entity.spawn_behavior()

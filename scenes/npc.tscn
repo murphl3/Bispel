@@ -1,0 +1,37 @@
+[gd_scene load_steps=5 format=3 uid="uid://yvkdymbiw3f"]
+
+[ext_resource type="Script" uid="uid://3fxvymce1fq1" path="res://scripts/npc.gd" id="1_nh2m4"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_3vyb7"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nh2m4"]
+albedo_color = Color(0, 0.486275, 0, 1)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_3vyb7"]
+
+[node name="NPC" type="CharacterBody3D" groups=["id_required"]]
+collision_layer = 16
+collision_mask = 16
+script = ExtResource("1_nh2m4")
+
+[node name="Collider" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CapsuleShape3D_3vyb7")
+
+[node name="Mesh" type="MeshInstance3D" parent="." groups=["id_required"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+material_override = SubResource("StandardMaterial3D_nh2m4")
+mesh = SubResource("CapsuleMesh_3vyb7")
+
+[node name="Head" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+
+[node name="Navigation Agent" type="NavigationAgent3D" parent="."]
+navigation_layers = 32
+avoidance_enabled = true
+radius = 5.0
+avoidance_layers = 16
+avoidance_mask = 16
+debug_enabled = true
+
+[connection signal="velocity_computed" from="Navigation Agent" to="." method="_on_navigation_agent_velocity_computed"]

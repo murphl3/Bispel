@@ -1,12 +1,16 @@
-[gd_scene load_steps=4 format=3 uid="uid://c26xmkmars1so"]
+[gd_scene load_steps=5 format=3 uid="uid://c26xmkmars1so"]
 
 [ext_resource type="Script" uid="uid://dmb8nw3ii6cvo" path="res://scripts/player.gd" id="1_ovufg"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_3vyb7"]
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3vyb7"]
+
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_3vyb7"]
 
 [node name="Player" type="CharacterBody3D" groups=["Player", "id_required"]]
+collision_layer = 16
+collision_mask = 16
 script = ExtResource("1_ovufg")
 
 [node name="Collider" type="CollisionShape3D" parent="."]
@@ -15,6 +19,7 @@ shape = SubResource("CapsuleShape3D_3vyb7")
 
 [node name="Mesh" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+material_override = SubResource("StandardMaterial3D_3vyb7")
 mesh = SubResource("CapsuleMesh_3vyb7")
 
 [node name="Head" type="Marker3D" parent="."]
