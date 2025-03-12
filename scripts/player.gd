@@ -8,6 +8,7 @@ extends CharacterBody3D
 @export var ACCELERATION: float = 7.5
 @onready var head: Marker3D = $Head
 @onready var camera: Camera3D = $Head/Camera
+@onready var targeting: RayCast3D = $Targeting
 
 func _ready() -> void:
 	GlobalInputs.set_active(self)
@@ -41,4 +42,6 @@ func _physics_process(delta: float) -> void:
 	if get_slide_collision_count() > 0:
 		velocity = velocity.lerp(Vector3.ZERO, 3 * delta)
 	velocity += get_gravity() * delta
+	targeting.basis = head.basis
 	move_and_slide()
+	$Targeting/Ball.global_position = targeting.get_collision_point()

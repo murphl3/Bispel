@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://c26xmkmars1so"]
+[gd_scene load_steps=7 format=3 uid="uid://c26xmkmars1so"]
 
 [ext_resource type="Script" uid="uid://dmb8nw3ii6cvo" path="res://scripts/player.gd" id="1_ovufg"]
 
@@ -7,6 +7,14 @@
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3vyb7"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_3vyb7"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_g2els"]
+albedo_color = Color(1, 0, 1, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_3vyb7"]
+material = SubResource("StandardMaterial3D_g2els")
+radius = 0.15
+height = 0.3
 
 [node name="Player" type="CharacterBody3D" groups=["Player", "id_required"]]
 collision_layer = 16
@@ -26,3 +34,12 @@ mesh = SubResource("CapsuleMesh_3vyb7")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
 
 [node name="Camera" type="Camera3D" parent="Head"]
+
+[node name="Targeting" type="RayCast3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+target_position = Vector3(0, 0, -1000)
+collision_mask = 16
+hit_from_inside = true
+
+[node name="Ball" type="MeshInstance3D" parent="Targeting"]
+mesh = SubResource("SphereMesh_3vyb7")
