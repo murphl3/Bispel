@@ -11,15 +11,13 @@ config_version=5
 [application]
 
 config/name="Bispel"
-run/main_scene="res://legacy/scenes/main.tscn"
+run/main_scene="uid://bfj3dfcpcx8ux"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
 
 [autoload]
 
-GlobalEnums="*res://legacy/scripts/global_enums.gd"
-Global="*res://legacy/scripts/global.gd"
-GlobalInputs="*res://legacy/scripts/global_inputs.gd"
+Global="*res://scripts/global/global.gd"
 
 [global_group]
 
