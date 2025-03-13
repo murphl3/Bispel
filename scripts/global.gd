@@ -7,8 +7,12 @@ var rng = RandomNumberGenerator.new()
 var current_id: int = 0
 var id_list: Dictionary = {}
 var paused: bool = false
+var pause_menu: Control = null
 
 func _ready() -> void:
+	pause_menu = root.pause_menu.instantiate()
+	pause_menu.hide()
+	root.add_child(pause_menu)
 	terrain_rng.seed = game_seed
 	rng.seed = game_seed
 	root.child_entered_tree.connect(apply_id)
