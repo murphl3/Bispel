@@ -1,3 +1,6 @@
-[gd_scene format=3 uid="uid://veq4tbrpbr1f"]
+[gd_scene load_steps=2 format=3 uid="uid://veq4tbrpbr1f"]
+
+[ext_resource type="Script" uid="uid://c6jarvxvmw5nj" path="res://scripts/brains/brain.gd" id="1_wxe8b"]
 
 [node name="Brain" type="Node"]
+script = ExtResource("1_wxe8b")

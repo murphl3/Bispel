@@ -99,9 +99,13 @@ move_sprint={
 
 [layer_names]
 
+3d_physics/layer_1="Environment"
 3d_navigation/layer_1="Environment"
-3d_physics/layer_5="Environment"
+3d_physics/layer_5="Layer 5"
 3d_navigation/layer_6="Navigation Paths"
+avoidance/layer_2="NPCs"
+avoidance/layer_3="Enemies"
+avoidance/layer_4="Player"
 
 [physics]
 
