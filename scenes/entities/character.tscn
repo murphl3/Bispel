@@ -8,7 +8,7 @@
 
 [node name="Character" type="CharacterBody3D"]
 script = ExtResource("1_u25id")
-reach_distance = null
+metadata/updated = true
 
 [node name="Mesh" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
