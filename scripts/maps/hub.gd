@@ -12,5 +12,6 @@ func _process(delta: float) -> void:
 	if Engine.is_editor_hint():
 		if get_meta("Updated", false):
 			remove_meta("Updated")
+			notify_property_list_changed()
 	if not Engine.is_editor_hint():
 		pass

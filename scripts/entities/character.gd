@@ -7,6 +7,7 @@ extends CharacterBody3D
 func _ready() -> void:
 	if Engine.is_editor_hint():
 		set_meta("Updated", true)
+		property_list_changed.connect(set_meta.bind("updated", true))
 	if not Engine.is_editor_hint():
 		add_child(brain.instantiate())
 
@@ -14,6 +15,7 @@ func _physics_process(delta: float) -> void:
 	if Engine.is_editor_hint():
 		if get_meta("Updated", false):
 			remove_meta("Updated")
+			notify_property_list_changed()
 	if not Engine.is_editor_hint():
 		velocity += get_gravity() * delta
 		move_and_slide()
