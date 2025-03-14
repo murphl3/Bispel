@@ -11,6 +11,6 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	if Engine.is_editor_hint():
 		if get_meta("Updated", false):
-			pass
+			remove_meta("Updated")
 	if not Engine.is_editor_hint():
 		pass
