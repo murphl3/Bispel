@@ -1,8 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://d2j2skqrjfu2v"]
-
-[ext_resource type="Script" path="res://scripts/main.gd" id="1_suxg6"]
-
-[node name="Main" type="Node"]
-script = ExtResource("1_suxg6")
-
-[connection signal="child_entered_tree" from="." to="." method="_on_child_entered_tree"]

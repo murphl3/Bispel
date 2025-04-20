@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Bispel"
-run/main_scene="uid://bfj3dfcpcx8ux"
+run/main_scene="uid://cna35gqcd0aip"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
 
@@ -22,10 +22,6 @@ Global="*res://scripts/global/global.gd"
 [filesystem]
 
 import/blender/enabled=false
-
-[global_group]
-
-id_required="This scene requires an ID when instantiated."
 
 [input]
 
@@ -103,13 +99,16 @@ move_sprint={
 
 [layer_names]
 
-3d_physics/layer_1="Environment"
-3d_navigation/layer_1="Environment"
-3d_physics/layer_5="Layer 5"
-3d_navigation/layer_6="Navigation Paths"
-avoidance/layer_2="NPCs"
-avoidance/layer_3="Enemies"
-avoidance/layer_4="Player"
+3d_render/layer_1="Physical"
+3d_render/layer_2="Mental"
+3d_render/layer_3="Spirit"
+3d_physics/layer_1="Physical"
+3d_navigation/layer_1="Global"
+3d_physics/layer_2="Mental"
+3d_navigation/layer_2="Physical"
+3d_physics/layer_3="Spirit"
+3d_navigation/layer_3="Mental"
+3d_navigation/layer_4="Spirit"
 
 [physics]
 

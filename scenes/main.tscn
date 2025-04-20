@@ -1,6 +1,60 @@
-[gd_scene load_steps=2 format=3 uid="uid://bfj3dfcpcx8ux"]
+[gd_scene load_steps=7 format=3 uid="uid://cna35gqcd0aip"]
 
-[ext_resource type="Script" uid="uid://dd8d2en45phcp" path="res://scripts/main.gd" id="1_o5qli"]
+[ext_resource type="PackedScene" uid="uid://bmia782maj3q8" path="res://scenes/agents/Player.tscn" id="1_o5qli"]
 
-[node name="Main" type="Node"]
-script = ExtResource("1_o5qli")
+[sub_resource type="GDScript" id="GDScript_sgp6g"]
+script/source = "extends Node3D
+
+func _ready() -> void:
+	$Camera3D.make_current()
+
+func _physics_process(_delta: float) -> void:
+	pass
+"
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_o5qli"]
+sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
+ground_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
+
+[sub_resource type="Sky" id="Sky_0wfyh"]
+sky_material = SubResource("ProceduralSkyMaterial_o5qli")
+
+[sub_resource type="Environment" id="Environment_sugp2"]
+background_mode = 2
+sky = SubResource("Sky_0wfyh")
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_0wfyh"]
+radius = 100.0
+
+[node name="Main" type="Node3D"]
+script = SubResource("GDScript_sgp6g")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
+layers = 7
+shadow_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_sugp2")
+
+[node name="Area3D" type="Area3D" parent="."]
+gravity_space_override = 3
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("SphereShape3D_0wfyh")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.98238, 0)
+layers = 7
+use_collision = true
+collision_layer = 7
+collision_mask = 7
+size = Vector3(50, 1, 50)
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.98663)
+cull_mask = 1047553
+
+[node name="Player" parent="." instance=ExtResource("1_o5qli")]

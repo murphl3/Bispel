@@ -1,0 +1,78 @@
+[gd_scene load_steps=11 format=3 uid="uid://bmia782maj3q8"]
+
+[ext_resource type="Script" uid="uid://dejnl0b8tfpx5" path="res://classes/RelayedRigidBody3D/RelayedBody3D.gd" id="1_l17bo"]
+[ext_resource type="Script" uid="uid://c4trqffnykc1i" path="res://classes/RelayedRigidBody3DController/PlayerRelayedRigidBody3DController.gd" id="2_e4qj3"]
+[ext_resource type="Script" uid="uid://d3jl1oeyu1lo7" path="res://classes/RelayedRigidBody3DController/AgentRelayedRigidBody3DController.gd" id="2_i4em7"]
+
+[sub_resource type="Resource" id="Resource_chupw"]
+script = ExtResource("2_e4qj3")
+connection_lock = true
+layer_override = false
+metadata/_custom_type_script = "uid://c4trqffnykc1i"
+
+[sub_resource type="Resource" id="Resource_rddjg"]
+script = ExtResource("2_i4em7")
+connection_lock = true
+layer_override = false
+metadata/_custom_type_script = "uid://d3jl1oeyu1lo7"
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_l17bo"]
+
+[sub_resource type="Resource" id="Resource_0a1ib"]
+script = ExtResource("2_i4em7")
+connection_lock = true
+layer_override = false
+metadata/_custom_type_script = "uid://d3jl1oeyu1lo7"
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_i4em7"]
+
+[sub_resource type="Resource" id="Resource_x0ibo"]
+script = ExtResource("2_i4em7")
+connection_lock = true
+layer_override = false
+metadata/_custom_type_script = "uid://d3jl1oeyu1lo7"
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_e4qj3"]
+
+[node name="Player" type="RigidBody3D"]
+collision_layer = 0
+collision_mask = 0
+script = ExtResource("1_l17bo")
+controller = SubResource("Resource_chupw")
+metadata/_custom_type_script = "uid://dejnl0b8tfpx5"
+
+[node name="Physical" type="RigidBody3D" parent="."]
+script = ExtResource("1_l17bo")
+controller = SubResource("Resource_rddjg")
+metadata/_custom_type_script = "uid://dejnl0b8tfpx5"
+
+[node name="Collider" type="CollisionShape3D" parent="Physical"]
+shape = SubResource("CapsuleShape3D_l17bo")
+
+[node name="Mesh" type="MeshInstance3D" parent="Physical"]
+
+[node name="Mental" type="RigidBody3D" parent="."]
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("1_l17bo")
+controller = SubResource("Resource_0a1ib")
+metadata/_custom_type_script = "uid://dejnl0b8tfpx5"
+
+[node name="Collider" type="CollisionShape3D" parent="Mental"]
+shape = SubResource("CapsuleShape3D_i4em7")
+
+[node name="Mesh" type="MeshInstance3D" parent="Mental"]
+skeleton = NodePath("../../Physical")
+
+[node name="Spirit" type="RigidBody3D" parent="."]
+collision_layer = 4
+collision_mask = 4
+script = ExtResource("1_l17bo")
+controller = SubResource("Resource_x0ibo")
+metadata/_custom_type_script = "uid://dejnl0b8tfpx5"
+
+[node name="Collider" type="CollisionShape3D" parent="Spirit"]
+shape = SubResource("CapsuleShape3D_e4qj3")
+
+[node name="Mesh" type="MeshInstance3D" parent="Spirit"]
+skeleton = NodePath("../../Physical")
