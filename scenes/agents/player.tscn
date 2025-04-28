@@ -1,0 +1,23 @@
+[gd_scene load_steps=3 format=3 uid="uid://ca3kcmpw8u0jd"]
+
+[ext_resource type="Script" uid="uid://3cmrwjimpqv" path="res://classes/LinkedController3D/PlayerController3D.gd" id="2_371wt"]
+
+[sub_resource type="Resource" id="Resource_26vld"]
+script = ExtResource("2_371wt")
+metadata/_custom_type_script = "uid://3cmrwjimpqv"
+
+[node name="Player"]
+mass = 20.0
+_controller = SubResource("Resource_26vld")
+
+[node name="PhysicalBody" parent="." index="0"]
+mass = 20.0
+
+[node name="Camera" parent="PhysicalBody" index="0"]
+current = true
+
+[node name="MentalBody" parent="." index="1"]
+mass = 20.0
+
+[node name="SpiritBody" parent="." index="2"]
+mass = 20.0

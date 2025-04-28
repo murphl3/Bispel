@@ -1,0 +1,2 @@
+extends AgentController3D
+class_name PlayerController3D

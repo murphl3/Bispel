@@ -1,0 +1,2 @@
+extends LinkedController3D
+class_name AgentController3D

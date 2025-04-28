@@ -1,6 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://cna35gqcd0aip"]
+[gd_scene load_steps=9 format=3 uid="uid://cna35gqcd0aip"]
 
-[ext_resource type="PackedScene" uid="uid://bmia782maj3q8" path="res://scenes/agents/Player.tscn" id="1_o5qli"]
+[ext_resource type="PackedScene" uid="uid://ble8jhwbnfked" path="res://scenes/agents/GenericAgent.tscn" id="1_o5qli"]
+[ext_resource type="Script" uid="uid://3cmrwjimpqv" path="res://classes/LinkedController3D/PlayerController3D.gd" id="2_0wfyh"]
 
 [sub_resource type="GDScript" id="GDScript_sgp6g"]
 script/source = "extends Node3D
@@ -27,6 +28,10 @@ glow_enabled = true
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_0wfyh"]
 radius = 100.0
+
+[sub_resource type="Resource" id="Resource_sugp2"]
+script = ExtResource("2_0wfyh")
+metadata/_custom_type_script = "uid://3cmrwjimpqv"
 
 [node name="Main" type="Node3D"]
 script = SubResource("GDScript_sgp6g")
@@ -57,4 +62,6 @@ size = Vector3(50, 1, 50)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.98663)
 cull_mask = 1047553
 
-[node name="Player" parent="." instance=ExtResource("1_o5qli")]
+[node name="GenericAgent" parent="." instance=ExtResource("1_o5qli")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.95382, 0)
+_controller = SubResource("Resource_sugp2")

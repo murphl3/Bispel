@@ -1,0 +1,28 @@
+[gd_scene load_steps=6 format=3 uid="uid://cpykx5yedm1mq"]
+
+[ext_resource type="Script" uid="uid://daspv0pdvo8vn" path="res://classes/LinkedBody3D/LinkedBody3D.gd" id="1_2mipj"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_2mipj"]
+friction = 0.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2mipj"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_luvkb"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_6xq4i"]
+
+[node name="GenericBody" type="RigidBody3D"]
+mass = 26.659
+physics_material_override = SubResource("PhysicsMaterial_2mipj")
+script = ExtResource("1_2mipj")
+metadata/_custom_type_script = "uid://daspv0pdvo8vn"
+
+[node name="Camera" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+
+[node name="Mesh" type="MeshInstance3D" parent="."]
+material_override = SubResource("StandardMaterial3D_2mipj")
+mesh = SubResource("CapsuleMesh_luvkb")
+
+[node name="Collider" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_6xq4i")

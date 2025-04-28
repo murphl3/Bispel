@@ -1,0 +1,84 @@
+[gd_scene load_steps=10 format=3 uid="uid://ble8jhwbnfked"]
+
+[ext_resource type="Script" uid="uid://daspv0pdvo8vn" path="res://classes/LinkedBody3D/LinkedBody3D.gd" id="1_4ptmw"]
+[ext_resource type="Script" uid="uid://l41q8w2sqpqp" path="res://classes/LinkedController3D/LinkedController3D.gd" id="2_u4gsm"]
+
+[sub_resource type="Resource" id="Resource_j3du6"]
+script = ExtResource("2_u4gsm")
+metadata/_custom_type_script = "uid://l41q8w2sqpqp"
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_2mipj"]
+friction = 0.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jyv4r"]
+albedo_color = Color(1, 0, 0, 1)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_luvkb"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_6xq4i"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ce8ch"]
+albedo_color = Color(0, 1, 0, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6aj3v"]
+albedo_color = Color(0, 0, 1, 1)
+
+[node name="GenericAgent" type="RigidBody3D"]
+collision_layer = 0
+collision_mask = 0
+mass = 20.0
+script = ExtResource("1_4ptmw")
+_controller = SubResource("Resource_j3du6")
+metadata/_custom_type_script = "uid://daspv0pdvo8vn"
+
+[node name="PhysicalBody" type="RigidBody3D" parent="."]
+mass = 20.0
+physics_material_override = SubResource("PhysicsMaterial_2mipj")
+script = ExtResource("1_4ptmw")
+metadata/_custom_type_script = "uid://daspv0pdvo8vn"
+
+[node name="Camera" type="Camera3D" parent="PhysicalBody"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+
+[node name="Mesh" type="MeshInstance3D" parent="PhysicalBody"]
+material_override = SubResource("StandardMaterial3D_jyv4r")
+mesh = SubResource("CapsuleMesh_luvkb")
+
+[node name="Collider" type="CollisionShape3D" parent="PhysicalBody"]
+shape = SubResource("CapsuleShape3D_6xq4i")
+
+[node name="MentalBody" type="RigidBody3D" parent="."]
+collision_layer = 2
+collision_mask = 2
+mass = 20.0
+physics_material_override = SubResource("PhysicsMaterial_2mipj")
+script = ExtResource("1_4ptmw")
+metadata/_custom_type_script = "uid://daspv0pdvo8vn"
+
+[node name="Camera" type="Camera3D" parent="MentalBody"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+
+[node name="Mesh" type="MeshInstance3D" parent="MentalBody"]
+material_override = SubResource("StandardMaterial3D_ce8ch")
+mesh = SubResource("CapsuleMesh_luvkb")
+
+[node name="Collider" type="CollisionShape3D" parent="MentalBody"]
+shape = SubResource("CapsuleShape3D_6xq4i")
+
+[node name="SpiritBody" type="RigidBody3D" parent="."]
+collision_layer = 4
+collision_mask = 4
+mass = 20.0
+physics_material_override = SubResource("PhysicsMaterial_2mipj")
+script = ExtResource("1_4ptmw")
+metadata/_custom_type_script = "uid://daspv0pdvo8vn"
+
+[node name="Camera" type="Camera3D" parent="SpiritBody"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+
+[node name="Mesh" type="MeshInstance3D" parent="SpiritBody"]
+material_override = SubResource("StandardMaterial3D_6aj3v")
+mesh = SubResource("CapsuleMesh_luvkb")
+
+[node name="Collider" type="CollisionShape3D" parent="SpiritBody"]
+shape = SubResource("CapsuleShape3D_6xq4i")
