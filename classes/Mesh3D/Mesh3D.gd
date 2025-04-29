@@ -1,0 +1,2 @@
+extends VisualInstance3D
+class_name Mesh3D
